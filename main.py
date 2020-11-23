@@ -13,7 +13,15 @@ class MainApp(Tk):
         ## s.configure('my.TLabel', font='Helvetica 36', background='black', foreground='white')
 
         self.display = ttk.Label(self, text="0", anchor=E, font='Helvetica 36', background='black', foreground='white', padding=5)
-        self.display.pack(side=TOP, fill=BOTH)    
+        self.display.pack(side=TOP, fill=BOTH)
+
+        self.calcButtonC = ttk.Frame(self, width=68, height=50)
+        btn = ttk.Button(self.calcButtonC, text='C')
+        self.calcButtonC.pack_propagate(False)
+        btn.pack(side=TOP, fill=BOTH, expand=True)
+
+        self.calcButtonC.pack(side=TOP)
+
 
 
 if __name__ == '__main__':
