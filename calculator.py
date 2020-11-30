@@ -163,12 +163,12 @@ class Calculator(ttk.Frame):
     def gestiona_calculos(self, tecla):
         print(tecla)
 
-        if tecla.isdigit() != 0:
+        if tecla.isdigit():
             print('cadena', self.cadena)
             if not (self.cadena == '' and tecla == '0'):
                 self.cadena += tecla
                 self.display.refresh(self.cadena)
-        elif tecla == '.':
+        elif tecla == '.' and '.' not in self.cadena:
             if self.cadena != '':
                 print('cadena', self.cadena)
                 self.cadena += tecla
@@ -178,12 +178,14 @@ class Calculator(ttk.Frame):
 
 
         elif tecla in '+-x÷':
+            self.operador = tecla
             if self.valor1 == None:
                 self.valor1 = float(self.cadena)
                 self.cadena = ''
                 self.operador = tecla
             else:
-                if not self.cadena: 
+                if not self.cadena:
+                    self.operador = tecla
                     return
                 self.valor2 = float(self.cadena)
                 self.r = self.calculate()
